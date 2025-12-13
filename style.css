@@ -1,0 +1,278 @@
+/* Step 1: Set up dark theme variables and base styles */
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent: #3b82f6;
+    --border: #333333;
+    --card-bg: #111111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Step 2: Style header section */
+.header {
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.header h2 {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.header p {
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 28px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2563eb;
+}
+
+/* Step 4: Style section titles and cards */
+section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background-color: var(--accent);
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+/* Education and Project Card Inline Styles moved to classes */
+.card h3 {
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.university-location {
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.degree-status {
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.duration-small {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.project-card .project-title {
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+}
+
+.project-card .project-description {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.project-card .tech-stack {
+    background-color: rgba(59, 130, 246, 0.1);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.project-card .tech-stack-list {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+/* Step 6: Style experience section */
+.job-title {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.company {
+    color: var(--accent);
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.duration {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 4px;
+}
+
+ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+/* Step 9: Style skills section */
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.skill-category {
+    margin-bottom: 32px;
+}
+
+.skill-category h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.skill-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-list li {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--text-secondary);
+    padding: 10px 16px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+}
+
+.skill-list .sub-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-left: 20px;
+    border-left: 3px solid var(--text-secondary);
+}
+
+/* Step 11: Style contact section */
+.contact-container {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+.contact-container h3 {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.contact-info p::before {
+    content: '•';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+}
+
+.download-text {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.footer {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+.footer p:last-child {
+    margin-top: 8px;
+}
