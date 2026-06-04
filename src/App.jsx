@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Education from './components/Education';
 import Contact from './components/Contact';
+import ScrollProgress from './components/ScrollProgress';
 
 export default function Portfolio() {
   const { theme } = useContext(ThemeContext);
@@ -32,6 +33,7 @@ export default function Portfolio() {
   return (
     <div className={theme}>
       <div className="bg-white dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen">
+      <ScrollProgress />
       <Navbar />
       <Hero scrollToSection={scrollToSection} />
       <Experience />
