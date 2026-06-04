@@ -1,3 +1,15 @@
+import { FaGithub } from 'react-icons/fa';
+import TiltCard from './TiltCard';
+
+const projectAccents = [
+  { from: 'from-blue-600', to: 'to-indigo-700', icon: '🤖' },
+  { from: 'from-emerald-600', to: 'to-teal-700', icon: '🌍' },
+  { from: 'from-purple-600', to: 'to-pink-700', icon: '💳' },
+  { from: 'from-orange-600', to: 'to-red-700', icon: '📁' },
+  { from: 'from-cyan-600', to: 'to-blue-700', icon: '🏫' },
+  { from: 'from-rose-600', to: 'to-pink-700', icon: '✈️' },
+];
+
 const projects = [
   {
     title: 'Devils Advocate',
@@ -78,47 +90,79 @@ const projects = [
   },
 ];
 
+function ProjectCard({ project, index }) {
+  const accent = projectAccents[index % projectAccents.length];
+
+  return (
+    <a
+      href={project.repo}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-aos="fade-up"
+      data-aos-delay={index * 100}
+      className="block"
+    >
+      <TiltCard maxTilt={12} perspective={1200} glare={true}>
+        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden h-full flex flex-col transition-all duration-300">
+          {/* Gradient header with icon */}
+          <div className={`bg-gradient-to-r ${accent.from} ${accent.to} px-6 py-4 flex items-center justify-between`}>
+            <h3 className="text-xl font-bold text-white">{project.title}</h3>
+            <span className="text-2xl">{accent.icon}</span>
+          </div>
+
+          {/* Card body */}
+          <div className="p-6 flex flex-col flex-1">
+            <p className="text-gray-500 dark:text-gray-400 mb-4 text-sm leading-relaxed">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-gray-100 dark:bg-gray-800 text-xs px-2.5 py-1 rounded-full font-medium text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <ul className="space-y-1.5 text-sm text-gray-500 dark:text-gray-400 mt-auto">
+              {project.highlights.map((h, j) => (
+                <li key={j} className="flex gap-2">
+                  <span className={`shrink-0 mt-0.5 w-1.5 h-1.5 rounded-full bg-gradient-to-r ${accent.from} ${accent.to}`} />
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* GitHub link indicator */}
+            <div className="mt-4 pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+              <FaGithub className="w-3.5 h-3.5" />
+              <span>View on GitHub</span>
+              <span className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </div>
+          </div>
+        </div>
+      </TiltCard>
+    </a>
+  );
+}
+
 export default function Projects() {
   return (
     <section id="projects" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center" data-aos="fade-up">Projects</h2>
+        <div className="text-center mb-12" data-aos="fade-up">
+          <h2 className="text-4xl font-bold mb-3">Projects</h2>
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+            A collection of projects showcasing my expertise in backend architecture, API design, and full-stack development.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((project, i) => (
-            <a
-              key={i}
-              href={project.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-aos="fade-up"
-              data-aos-delay={i * 100}
-            >
-              <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:border-gray-300 dark:hover:border-gray-700 transition-colors h-full flex flex-col">
-                <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 mb-4">{project.description}</p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-gray-100 dark:bg-gray-800 text-sm px-3 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400 mt-auto">
-                  {project.highlights.map((h, j) => (
-                    <li key={j} className="flex gap-2">
-                      <span className="text-blue-600">▸</span>
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </a>
+            <ProjectCard key={i} project={project} index={i} />
           ))}
         </div>
       </div>
