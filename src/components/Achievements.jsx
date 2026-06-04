@@ -8,6 +8,7 @@ const achievements = [
     target: 3,
     suffix: '+',
     color: 'from-blue-500 to-cyan-500',
+    iconColor: 'text-blue-500',
     bgColor: 'bg-blue-50 dark:bg-blue-950/30',
     borderColor: 'border-blue-200 dark:border-blue-900',
     iconBg: 'bg-blue-100 dark:bg-blue-900/50',
@@ -18,6 +19,7 @@ const achievements = [
     target: 6,
     suffix: '+',
     color: 'from-purple-500 to-pink-500',
+    iconColor: 'text-purple-500',
     bgColor: 'bg-purple-50 dark:bg-purple-950/30',
     borderColor: 'border-purple-200 dark:border-purple-900',
     iconBg: 'bg-purple-100 dark:bg-purple-900/50',
@@ -28,6 +30,7 @@ const achievements = [
     target: 12,
     suffix: '+',
     color: 'from-emerald-500 to-teal-500',
+    iconColor: 'text-emerald-500',
     bgColor: 'bg-emerald-50 dark:bg-emerald-950/30',
     borderColor: 'border-emerald-200 dark:border-emerald-900',
     iconBg: 'bg-emerald-100 dark:bg-emerald-900/50',
@@ -38,6 +41,7 @@ const achievements = [
     target: 500,
     suffix: '+',
     color: 'from-amber-500 to-orange-500',
+    iconColor: 'text-amber-500',
     bgColor: 'bg-amber-50 dark:bg-amber-950/30',
     borderColor: 'border-amber-200 dark:border-amber-900',
     iconBg: 'bg-amber-100 dark:bg-amber-900/50',
@@ -48,7 +52,7 @@ function easeOutCubic(t) {
   return 1 - Math.pow(1 - t, 3);
 }
 
-function Counter({ target, suffix, label, icon, color, bgColor, borderColor, iconBg, index }) {
+function Counter({ target, suffix, label, icon, color, bgColor, borderColor, iconBg, iconColor, index }) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef(null);
@@ -104,7 +108,7 @@ function Counter({ target, suffix, label, icon, color, bgColor, borderColor, ico
     >
       {/* Icon */}
       <div className={`w-12 h-12 ${iconBg} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-        <span className={`bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
+        <span className={iconColor}>
           {icon}
         </span>
       </div>
@@ -158,6 +162,7 @@ export default function Achievements() {
               label={achievement.label}
               icon={achievement.icon}
               color={achievement.color}
+              iconColor={achievement.iconColor}
               bgColor={achievement.bgColor}
               borderColor={achievement.borderColor}
               iconBg={achievement.iconBg}
