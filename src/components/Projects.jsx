@@ -1,13 +1,13 @@
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaRobot, FaGlobeAmericas, FaCreditCard, FaFolderOpen, FaGraduationCap, FaPlane } from 'react-icons/fa';
 import TiltCard from './TiltCard';
 
 const projectAccents = [
-  { from: 'from-blue-600', to: 'to-indigo-700', icon: '🤖' },
-  { from: 'from-emerald-600', to: 'to-teal-700', icon: '🌍' },
-  { from: 'from-purple-600', to: 'to-pink-700', icon: '💳' },
-  { from: 'from-orange-600', to: 'to-red-700', icon: '📁' },
-  { from: 'from-cyan-600', to: 'to-blue-700', icon: '🏫' },
-  { from: 'from-rose-600', to: 'to-pink-700', icon: '✈️' },
+  { from: 'from-blue-600', to: 'to-indigo-700', icon: FaRobot },
+  { from: 'from-emerald-600', to: 'to-teal-700', icon: FaGlobeAmericas },
+  { from: 'from-purple-600', to: 'to-pink-700', icon: FaCreditCard },
+  { from: 'from-orange-600', to: 'to-red-700', icon: FaFolderOpen },
+  { from: 'from-cyan-600', to: 'to-blue-700', icon: FaGraduationCap },
+  { from: 'from-rose-600', to: 'to-pink-700', icon: FaPlane },
 ];
 
 const projects = [
@@ -107,7 +107,7 @@ function ProjectCard({ project, index }) {
           {/* Gradient header with icon */}
           <div className={`bg-gradient-to-r ${accent.from} ${accent.to} px-6 py-4 flex items-center justify-between`}>
             <h3 className="text-xl font-bold text-white">{project.title}</h3>
-            <span className="text-2xl">{accent.icon}</span>
+            <span className="text-2xl"><accent.icon /></span>
           </div>
 
           {/* Card body */}
