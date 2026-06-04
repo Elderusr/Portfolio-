@@ -1,9 +1,26 @@
+import { useState, useEffect } from 'react';
 import { FaArrowDown, FaDownload } from 'react-icons/fa';
 import { SiNestjs, SiExpress, SiTypescript, SiJavascript } from 'react-icons/si';
 import { FaDocker, FaReact } from 'react-icons/fa';
 import ParticlesBackground from './ParticlesBackground';
 
+const ROLES = ['Backend Developer', 'Node.js Specialist', 'API Architect', 'Problem Solver'];
+
 export default function Hero({ scrollToSection }) {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+        setIsAnimating(false);
+      }, 400);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="hero" className="relative pt-32 pb-20 px-6 min-h-screen flex items-center overflow-hidden">
       {/* Animated particle background */}
@@ -14,8 +31,8 @@ export default function Hero({ scrollToSection }) {
 
       <div className="max-w-4xl mx-auto text-center relative z-10" data-aos="fade-up">
         <div className="inline-block mb-4">
-          <span className="text-sm font-mono text-blue-600 dark:text-blue-400 tracking-widest uppercase bg-blue-50 dark:bg-blue-950/50 px-4 py-1.5 rounded-full border border-blue-200 dark:border-blue-900">
-            Backend Developer
+          <span className={`text-sm font-mono text-blue-600 dark:text-blue-400 tracking-widest uppercase bg-blue-50 dark:bg-blue-950/50 px-4 py-1.5 rounded-full border border-blue-200 dark:border-blue-900 transition-all duration-400 inline-block ${isAnimating ? 'opacity-0 -translate-y-2 scale-95' : 'opacity-100 translate-y-0 scale-100'}`}>
+            {ROLES[roleIndex]}
           </span>
         </div>
 
