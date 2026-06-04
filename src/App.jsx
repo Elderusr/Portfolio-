@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import ThemeContext from './ThemeContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Experience from './components/Experience';
@@ -10,6 +11,8 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 
 export default function Portfolio() {
+  const { theme } = useContext(ThemeContext);
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -26,7 +29,8 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen">
+    <div className={theme}>
+      <div className="bg-white dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen">
       <Navbar />
       <Hero scrollToSection={scrollToSection} />
       <Experience />
@@ -34,6 +38,7 @@ export default function Portfolio() {
       <Skills />
       <Education />
       <Contact />
+      </div>
     </div>
   );
 }
